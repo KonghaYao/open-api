@@ -3,7 +3,7 @@ import { Data } from "./define";
 const data: Data = {
     title: "JSdelivr NPM 库获取",
     desc: "jsdelivr 提供了直接获取 npm 库中的代码的 API 方式",
-    link: "https://jsdelivr.com",
+    link: "https://baidu.com",
     tags: ["CDN", "WEB"],
     request: {
         root: "https://cdn.jsdelivr.net/:where/:packageName:version/:path?",

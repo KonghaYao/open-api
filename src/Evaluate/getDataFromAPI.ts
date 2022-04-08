@@ -61,7 +61,7 @@ function getPath(request: request, defineRequest: any) {
     const params = Object.assign(
         {},
         transCellToObj(request.pathParams),
-        defineRequest
+        defineRequest.params
     );
     let url = toPath(params);
     if (request.params && request.params.length) {

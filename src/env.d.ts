@@ -6,5 +6,10 @@ declare module "*.vue" {
     const component: DefineComponent<{}, {}, any>;
     export default component;
 }
+declare module "vue-good-table-next" {
+    const component: any;
+    export default component;
+    export const VueGoodTable: any;
+}
 
 declare const __baseURL__: string;
