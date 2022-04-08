@@ -1,0 +1,7 @@
+/* 全局样式 */
+.button-like {
+    @apply transition-transform active:scale-90 cursor-pointer;
+}
+.google-icon {
+    @apply transition-transform active:scale-90;
+}
