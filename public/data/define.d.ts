@@ -1,5 +1,6 @@
 export type Tags = "CDN" | "WEB";
 export type ParamsCell = {
+    /** 键值 */
     key: string;
     /** 默认测试的值 */
     value: string;
@@ -7,6 +8,7 @@ export type ParamsCell = {
     must?: boolean;
     /** 校验输入是否正确 */
     validate?: (self: ParamsCell) => boolean;
+    /** 描述信息 */
     desc?: string;
 };
 export type request = {

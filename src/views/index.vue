@@ -6,6 +6,7 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
+import { Eval } from '../Evaluate/eval'
 
 /** 加载 Babel */
 import BabelModule from '@babel/standalone'
@@ -34,11 +35,9 @@ onMounted(async () => {
     );
     console.log(output)
 
-    const script = URL.createObjectURL(new File([output.code], 'index.js', { type: "application/javascript" }))
-
-    const data = await import(/* @vite-ignore */script)
+    const data = await Eval(output.code)
     console.log(data);
-    const callback = api(data.default, {})
-    console.log(callback);
+    const callback = await api(data.default, {})
+
 })  
 </script>

@@ -6,7 +6,8 @@ const data: Data = {
     link: "https://jsdelivr.com",
     tags: ["CDN", "WEB"],
     request: {
-        root: "cdn.jsdelivr.net/:where/:packageName:version/:path?",
+        root: "https://cdn.jsdelivr.net/:where/:packageName:version/:path?",
+
         pathParams: [
             {
                 key: "where",
@@ -26,7 +27,7 @@ const data: Data = {
                 must: false,
             },
         ],
-        params: [],
+        params: [{ key: "data", value: "1232" }],
         body: [],
         bodyType: "json",
     },
