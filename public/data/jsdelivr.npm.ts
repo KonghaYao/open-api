@@ -1,0 +1,35 @@
+import { Data } from "./define";
+
+const data: Data = {
+    title: "JSdelivr NPM 库获取",
+    desc: "jsdelivr 提供了直接获取 npm 库中的代码的 API 方式",
+    link: "https://jsdelivr.com",
+    tags: ["CDN", "WEB"],
+    request: {
+        root: "cdn.jsdelivr.net/:where/:packageName:version/:path?",
+        pathParams: [
+            {
+                key: "where",
+                value: "npm",
+            },
+            {
+                key: "packageName",
+                value: "vue",
+            },
+            {
+                key: "version",
+                value: "@3.0.0",
+            },
+            {
+                key: "path",
+                value: "",
+                must: false,
+            },
+        ],
+        params: [],
+        body: [],
+        bodyType: "json",
+    },
+    resultType: "text",
+};
+export default data;
