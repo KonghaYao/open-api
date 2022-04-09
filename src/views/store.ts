@@ -10,7 +10,7 @@ const Babel = (window as any).Babel as typeof BabelModule;
 /** 加载 worker */
 import "https://unpkg.com/comlink/dist/umd/comlink.js";
 import worker from "../Evaluate/index?worker";
-import { getDataFromAPI } from "@/Evaluate/getDataFromAPI";
+import { getDataFromAPI, getPath } from "../Evaluate/getDataFromAPI";
 const { wrap } = (window as any).Comlink;
 const api = wrap(new worker()) as typeof getDataFromAPI;
 
@@ -39,6 +39,7 @@ export const useViewerStore = defineStore("viewer", {
                     width: "20%",
                 },
             ] as const,
+            path: "",
             data: null as null | Data,
             result: {
                 isReturn: false,
@@ -58,6 +59,11 @@ export const useViewerStore = defineStore("viewer", {
             console.log(output);
             this.data = (await Eval(output.code)).default;
         },
+        refreshPath() {
+            if (this.data) {
+                this.path = getPath(this.data!.request, {});
+            }
+        },
         async checkAPI() {
             if (this.data) {
                 const startTime = new Date().getTime();
@@ -65,6 +71,7 @@ export const useViewerStore = defineStore("viewer", {
                 const [path, result] = await api(data, {});
                 this.result.data = result;
                 this.result.path = path;
+                this.path = path;
                 this.result.duration = new Date().getTime() - startTime;
                 this.result.isReturn = true;
             }

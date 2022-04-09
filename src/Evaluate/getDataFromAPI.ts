@@ -49,7 +49,7 @@ function getURLSearchParams(obj: Object) {
     }
 }
 /** 转化对象为路径 */
-function getPath(request: request, defineRequest: any) {
+export function getPath(request: request, defineRequest: any) {
     const [prot, path] = request.root.split(/(?<=^https?):\/\//);
     const toPath = compile(path);
     /** 写入路径参数 */

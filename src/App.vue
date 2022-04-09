@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <router-view></router-view>
+    <router-view class="font-normal"></router-view>
 </template>
 
 <style>
@@ -14,7 +14,6 @@
 @tailwind utilities;
 
 #app {
-    font-family: 白无常可可体, Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;

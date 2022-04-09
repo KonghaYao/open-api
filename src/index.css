@@ -9,6 +9,9 @@
 .font-code {
     font-family: Source, system-ui;
 }
+.font-normal {
+    font-family: 白无常可可体, Avenir, Helvetica, Arial, sans-serif;
+}
 .tag {
     @apply px-2 py-1 bg-gray-100 m-1 cursor-default;
 }

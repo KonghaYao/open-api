@@ -1,10 +1,13 @@
 
 
 <template>
-    <div>
-        <div>
-            <Tag>{{ props.type }}</Tag>
-            <span>耗时：{{ store.result.duration }} ms</span>
+    <div class="flex flex-col">
+        <div class="flex items-center">
+            <span
+                class="tag text-xl h-full bg-pink-600 text-white"
+            >类型：{{ props.type.toUpperCase() }}</span>
+
+            <div class="tag text-xl h-full bg-pink-600 text-white">耗时：{{ store.result.duration }} ms</div>
         </div>
         <div class="w-full overflow-y-auto">
             <component :is="usingComponent" :data="props.data"></component>

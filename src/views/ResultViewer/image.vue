@@ -1,8 +1,9 @@
 
 
 <template>
-    <div class="flex flex-col justify-center items-center"></div>
-    <div class="text-center">宽：{{ size[0] }}px ,高：{{ size[1] }}px</div>
+    <div
+        class="text-center tag bg-purple-400 text-xl text-white"
+    >宽：{{ size[0] }}px 高：{{ size[1] }}px</div>
     <img class="w-1/2 m-auto border border-gray-300" ref="image" :src="store.result.path" />
 </template>
 

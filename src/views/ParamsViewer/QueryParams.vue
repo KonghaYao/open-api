@@ -14,7 +14,7 @@
         </template>
 
         <template v-slot:value="data">
-            <input type="text" v-model="data.value.value" />
+            <input type="text" v-model="data.value.value" @input="$emit('refresh')" />
         </template>
     </table-lite>
 </template>

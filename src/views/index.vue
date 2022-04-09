@@ -1,7 +1,8 @@
 
 <template>
     <div class="h-full w-full flex flex-col p-8 overflow-y-auto" v-if="store.data">
-        <header class="text-3xl flex">
+        <!--  头部信息展示 -->
+        <header class="text-3xl flex mb-4">
             <a
                 class="hover:text-sky-400 transition-colors"
                 :href="store.data!.link"
@@ -17,15 +18,20 @@
         <main class="flex flex-col">
             <div class="w-full text-2xl">API 指示器</div>
 
-            <div class="flex flex-row justify-between">
-                <div>{{ store.data!.request.root }}</div>
-                <Tag class="px-8 mx-2">{{ store.data!.request.methods ?? "get" }}</Tag>
+            <div class="flex flex-row justify-between my-4">
+                <span class="text-xl flex-none bg-sky-400 text-white tag">完整 URL</span>
+                <span class="font-code overflow-x-auto whitespace-nowrap mx-8">{{ store.path }}</span>
+                <span
+                    class="text-xl bg-green-400 text-white tag"
+                >{{ (store.data!.request.methods ?? "get").toUpperCase() }}</span>
             </div>
-            <div class="font-code">
+            <div class="font-code bg-gray-50">
                 <tabs v-model:active="active">
                     <tab title="Params">
-                        <QueryParams></QueryParams>
-                        <Params></Params>
+                        <div class="font-normal text-xl">路径参数</div>
+                        <QueryParams @refresh="store.refreshPath"></QueryParams>
+                        <div class="font-normal text-xl">请求参数</div>
+                        <Params @refresh="store.refreshPath"></Params>
                     </tab>
                     <tab title="Header"></tab>
                     <tab title="Body" v-if="store.data!.request.methods === 'post'">
@@ -37,11 +43,18 @@
         <nav>
             <div class="text-2xl">结果展示</div>
 
-            <div class="font-code">{{ store.result.path }}</div>
-            <button
-                class="p-2 bg-sky-400 text-white hover:brightness-95 transition-all"
-                @click="store.checkAPI"
-            >重新加载</button>
+            <div class="flex my-4">
+                <span class="text-xl flex-none bg-sky-400 text-white tag">完整 URL</span>
+
+                <span
+                    class="font-code overflow-x-auto whitespace-nowrap mx-8"
+                >{{ store.result.path }}</span>
+                <button
+                    class="p-2 flex-none bg-sky-400 text-white hover:brightness-95 transition-all"
+                    @click="store.checkAPI"
+                >重新加载</button>
+            </div>
+
             <Result
                 v-if="store.result.isReturn"
                 :type="store.data.resultType"
