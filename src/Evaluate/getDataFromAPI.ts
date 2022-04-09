@@ -26,7 +26,7 @@ export async function getDataFromAPI({ request }: Data, defineRequest: any) {
 function transCellToObj(cell?: ParamsCell[]) {
     if (cell && cell.length) {
         return cell.reduce((col, cur) => {
-            col[cur.key] = cur.must !== false ? cur.value : undefined;
+            col[cur.key] = cur.value;
 
             return col;
         }, {} as any);
@@ -56,6 +56,7 @@ function getPath(request: request, defineRequest: any) {
         transCellToObj(request.pathParams),
         defineRequest.params
     );
+    console.log(params);
     let url = toPath(params);
     if (request.params && request.params.length) {
         /** 写入请求参数 */

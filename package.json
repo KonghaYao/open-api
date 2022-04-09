@@ -26,6 +26,7 @@
         "vant": "^3.4.7",
         "vue": "^3.2.31",
         "vue-good-table-next": "^0.1.0",
+        "vue-json-pretty": "^2.0.6",
         "vue-router": "^4.0.14"
     },
     "devDependencies": {

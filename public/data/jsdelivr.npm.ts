@@ -23,7 +23,7 @@ const data: Data = {
             },
             {
                 key: "path",
-                value: "",
+                value: "package.json",
                 must: false,
             },
         ],
