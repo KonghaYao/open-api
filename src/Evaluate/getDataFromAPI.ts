@@ -17,10 +17,12 @@ export async function getDataFromAPI({ request }: Data, defineRequest: any) {
     const result = await fetch(path, {
         method: request.methods,
         body,
-    }).then((res): Promise<Blob> => {
-        return res.blob();
-    });
-    return result;
+    })
+        .then((res): Promise<Blob> => {
+            return res.blob();
+        })
+        .catch(() => null);
+    return [path, result] as [string, Blob | null];
 }
 /** 转化 Cell 为对象 */
 function transCellToObj(cell?: ParamsCell[]) {

@@ -2,7 +2,10 @@
 
 <template>
     <div>
-        <Tag>{{ props.type }}</Tag>
+        <div>
+            <Tag>{{ props.type }}</Tag>
+            <span>耗时：{{ store.result.duration }} ms</span>
+        </div>
         <div class="w-full overflow-y-auto">
             <component :is="usingComponent" :data="props.data"></component>
         </div>
@@ -13,7 +16,8 @@
 import { computed, defineAsyncComponent } from 'vue'
 import { Data } from 'public/data/define';
 import { Tag } from 'vant';
-
+import { useViewerStore } from '../store';
+const store = useViewerStore()
 
 const props = defineProps<{
     data: Blob,

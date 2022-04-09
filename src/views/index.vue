@@ -33,6 +33,10 @@
         </main>
         <nav>
             <div>结果展示</div>
+            <button
+                class="p-2 bg-sky-400 text-white hover:brightness-95 transition-all"
+                @click="store.checkAPI"
+            >重新加载</button>
             <Result
                 v-if="store.result.isReturn"
                 :type="store.data.resultType"

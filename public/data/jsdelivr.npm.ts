@@ -31,6 +31,6 @@ const data: Data = {
         body: [],
         bodyType: "json",
     },
-    resultType: "text",
+    resultType: "file",
 };
 export default data;

@@ -42,9 +42,9 @@ export const useViewerStore = defineStore("viewer", {
             data: null as null | Data,
             result: {
                 isReturn: false,
-            } as {
-                isReturn: boolean;
-                data?: Blob;
+                data: null as null | Blob,
+                duration: 0,
+                path: "",
             },
         };
     },
@@ -60,8 +60,12 @@ export const useViewerStore = defineStore("viewer", {
         },
         async checkAPI() {
             if (this.data) {
+                const startTime = new Date().getTime();
                 const data = JSON.parse(JSON.stringify(this.data));
-                this.result.data = await api(data, {});
+                const [path, result] = await api(data, {});
+                this.result.data = result;
+                this.result.path = path;
+                this.result.duration = new Date().getTime() - startTime;
                 this.result.isReturn = true;
             }
         },
