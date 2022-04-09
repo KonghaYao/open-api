@@ -5,6 +5,7 @@ specifiers:
   '@konghayao/vue-material-icons': ^1.0.4
   '@tailwindcss/line-clamp': ^0.3.1
   '@types/babel__standalone': ^7.1.4
+  '@types/file-saver': ^2.0.5
   '@types/lodash-es': ^4.17.6
   '@vant/touch-emulator': ^1.3.2
   '@vitejs/plugin-vue': ^2.3.1
@@ -13,7 +14,9 @@ specifiers:
   autoprefixer: ^10.4.4
   axios: ^0.26.1
   comlink: ^4.3.1
+  file-saver: ^2.0.5
   lodash-es: ^4.17.21
+  mime2ext: ^2.0.0
   path-to-regexp: ^6.2.0
   pinia: ^2.0.13
   pinia-plugin-persist: ^1.0.0
@@ -40,7 +43,9 @@ dependencies:
   autoprefixer: 10.4.4_postcss@8.4.12
   axios: 0.26.1
   comlink: 4.3.1
+  file-saver: 2.0.5
   lodash-es: 4.17.21
+  mime2ext: 2.0.0
   path-to-regexp: 6.2.0
   pinia: 2.0.13_typescript@4.6.3+vue@3.2.31
   pinia-plugin-persist: 1.0.0_pinia@2.0.13+vue@3.2.31
@@ -54,6 +59,7 @@ dependencies:
 
 devDependencies:
   '@types/babel__standalone': 7.1.4
+  '@types/file-saver': 2.0.5
   '@types/lodash-es': 4.17.6
   '@vitejs/plugin-vue': 2.3.1_vite@2.9.1+vue@3.2.31
   postcss: 8.4.12
@@ -351,6 +357,10 @@ packages:
       '@babel/core': 7.17.9
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@types/file-saver/2.0.5:
+    resolution: {integrity: sha512-zv9kNf3keYegP5oThGLaPk8E081DFDuwfqjtiTzm6PoxChdJ1raSuADf2YGCVIyrSynLrgc8JWv296s7Q7pQSQ==}
     dev: true
 
   /@types/lodash-es/4.17.6:
@@ -1218,6 +1228,10 @@ packages:
       reusify: 1.0.4
     dev: false
 
+  /file-saver/2.0.5:
+    resolution: {integrity: sha512-P9bmyZ3h/PRG+Nzga+rbdI4OEpNDzAVyy74uVO9ATgzLK6VtAsYybF/+TOCvrc0MO793d6+42lLyZTw7/ArVzA==}
+    dev: false
+
   /fill-range/7.0.1:
     resolution: {integrity: sha512-qOo9F+dMUmC2Lcb4BbVvnKJxTPjCm+RRpe4gDuGrzkL7mEVl/djYSu2OdQ2Pa302N4oqkSg9ir6jaLWJ2USVpQ==}
     engines: {node: '>=8'}
@@ -1487,6 +1501,16 @@ packages:
     dependencies:
       braces: 3.0.2
       picomatch: 2.3.1
+    dev: false
+
+  /mime-standard/1.0.2:
+    resolution: {integrity: sha512-xUmjXVgIU9bL370jglTuRunmIJyOx9CKPH5IgaQtfx7IwUmKfMKuJddFXCFALFks/9fZ/zk3/ko9NoTskVx51g==}
+    dev: false
+
+  /mime2ext/2.0.0:
+    resolution: {integrity: sha512-v4f86Jsi/wtqbeXVJXcd7ZxMGAnTJ55LlMJS2tNYEQQoevDq6DdsxJxIAACjRUMPL43QJVzL6nF5x78BNf4R2Q==}
+    dependencies:
+      mime-standard: 1.0.2
     dev: false
 
   /minimist/1.2.6:

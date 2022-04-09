@@ -15,21 +15,23 @@
                 >{{ item }}</span>
             </div>
         </header>
-        <main class="flex flex-col">
+        <main class="flex flex-col shadow-lg p-4 shadow-gray-300 rounded-lg my-4">
             <div class="w-full text-2xl">API 指示器</div>
-
             <div class="flex flex-row justify-between my-4">
                 <span class="text-xl flex-none bg-sky-400 text-white tag">完整 URL</span>
                 <span class="font-code overflow-x-auto whitespace-nowrap mx-8">{{ store.path }}</span>
+                <Icon class="bg-lime-400 text-white px-2 text-xl m-1">content_copy</Icon>
                 <span
                     class="text-xl bg-green-400 text-white tag"
                 >{{ (store.data!.request.methods ?? "get").toUpperCase() }}</span>
             </div>
             <div class="font-code bg-gray-50">
                 <tabs v-model:active="active">
-                    <tab title="Params">
+                    <tab title="Path Params">
                         <div class="font-normal text-xl">路径参数</div>
                         <QueryParams @refresh="store.refreshPath"></QueryParams>
+                    </tab>
+                    <tab title="Query">
                         <div class="font-normal text-xl">请求参数</div>
                         <Params @refresh="store.refreshPath"></Params>
                     </tab>
@@ -40,7 +42,7 @@
                 </tabs>
             </div>
         </main>
-        <nav>
+        <nav class="shadow-lg shadow-gray-300 p-4 rounded-lg">
             <div class="text-2xl">结果展示</div>
 
             <div class="flex my-4">
@@ -67,13 +69,13 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { Tag } from 'vant'
 import { useViewerStore } from './store'
 import { Tab, Tabs } from 'vant';
 import Params from './ParamsViewer/Params.vue';
 import QueryParams from './ParamsViewer/QueryParams.vue';
 import Body from './ParamsViewer/Body.vue';
 import Result from './ResultViewer/index.vue'
+import Icon from "@konghayao/vue-material-icons"
 const active = ref('Params')
 const store = useViewerStore()
 

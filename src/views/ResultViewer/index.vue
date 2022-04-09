@@ -2,12 +2,19 @@
 
 <template>
     <div class="flex flex-col">
-        <div class="flex items-center">
+        <div class="flex items-center select-none">
             <span
                 class="tag text-xl h-full bg-pink-600 text-white"
             >类型：{{ props.type.toUpperCase() }}</span>
 
             <div class="tag text-xl h-full bg-pink-600 text-white">耗时：{{ store.result.duration }} ms</div>
+
+            <div
+                class="button-like tag text-xl h-full cursor-pointer bg-purple-600 text-white flex"
+                @click="download"
+            >
+                <Icon>download</Icon>下载
+            </div>
         </div>
         <div class="w-full overflow-y-auto">
             <component :is="usingComponent" :data="props.data"></component>
@@ -18,8 +25,10 @@
 <script setup lang="ts">
 import { computed, defineAsyncComponent } from 'vue'
 import { Data } from 'public/data/define';
-import { Tag } from 'vant';
+import Icon from '@konghayao/vue-material-icons';
 import { useViewerStore } from '../store';
+import { saveAs } from 'file-saver'
+import mime2ext from 'mime2ext'
 const store = useViewerStore()
 
 const props = defineProps<{
@@ -27,7 +36,13 @@ const props = defineProps<{
     type: Data['resultType']
 }>()
 
-
+const download = () => {
+    if (props.data) {
+        saveAs(props.data, new Date().getTime() + '.' + mime2ext(props.data.type))
+    } else {
+        saveAs(store.result.path, new Date().getTime() + '.jpg')
+    }
+}
 
 const componentMap: { [key in Data['resultType']]: () => any } = Object.entries({
     text: () => import('./text.vue'),

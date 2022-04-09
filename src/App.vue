@@ -23,7 +23,6 @@
 
     overflow: hidden;
 }
-
 html,
 body {
     overflow: hidden;

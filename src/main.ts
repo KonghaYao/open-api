@@ -5,6 +5,9 @@ import "@vant/touch-emulator";
 import { Lazyload, Toast } from "vant";
 import piniaPluginPersist from "pinia-plugin-persist";
 import router from "./routers";
+import { useIcon } from "@konghayao/vue-material-icons/src/components/useIcon";
+
+useIcon();
 
 // pinia 中心管理
 const pinia = createPinia().use(piniaPluginPersist);
