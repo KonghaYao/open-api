@@ -24,7 +24,7 @@ const data: Data = {
             {
                 key: "path",
                 value: "package.json",
-                must: false,
+                optional: true,
             },
         ],
         params: [{ key: "data", value: "1232" }],

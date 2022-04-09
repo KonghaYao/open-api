@@ -8,11 +8,13 @@
 
 <style>
 @import url("./index.css");
+@import url("https://cdn.jsdelivr.net/gh/KonghaYao/chinese-free-web-font-storage/build/白无常可可体-Bold/result.css");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-family: 白无常可可体, Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;

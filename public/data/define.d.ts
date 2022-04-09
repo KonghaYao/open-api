@@ -5,7 +5,7 @@ export type ParamsCell = {
     /** 默认测试的值 */
     value: string;
     /** 是否必须填入该参数，默认为 true */
-    must?: boolean;
+    optional?: boolean;
     /** 校验输入是否正确 */
     validate?: (self: ParamsCell) => boolean;
     /** 描述信息 */

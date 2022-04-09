@@ -5,3 +5,10 @@
 .google-icon {
     @apply transition-transform active:scale-90;
 }
+
+.font-code {
+    font-family: Source, system-ui;
+}
+.tag {
+    @apply px-4 py-2 bg-gray-100;
+}

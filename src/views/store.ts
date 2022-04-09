@@ -20,7 +20,7 @@ export const useViewerStore = defineStore("viewer", {
             columns: [
                 {
                     label: "必填",
-                    field: "must",
+                    field: "optional",
                     width: "6%",
                 },
                 {

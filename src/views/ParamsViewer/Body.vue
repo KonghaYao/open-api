@@ -9,8 +9,8 @@
         isHidePaging
     >
         <template v-slot:key="data">{{ data.value.key }}</template>
-        <template v-slot:must="data">
-            <input type="checkbox" v-model="data.value.must" disabled />
+        <template v-slot:optional="data">
+            <checkbox :model-value="!data.value.optional"></checkbox>
         </template>
 
         <template v-slot:value="data">
@@ -20,6 +20,7 @@
 </template>
 
 <script setup lang="ts">
+import { Checkbox } from 'vant';
 import { useViewerStore } from '../store'
 import TableLite from "vue3-table-lite/ts";
 const store = useViewerStore()

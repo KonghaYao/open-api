@@ -19,24 +19,24 @@ const data: Data = {
             {
                 key: "i",
                 value: "f0680f8b2b8802c8321a580f63ec3d40",
-                must: false,
+                optional: true,
                 desc: "主体图片的 id",
             },
             {
                 key: "bg",
                 value: "FAFAFA",
-                must: false,
+                optional: true,
             },
             {
                 key: "n",
                 value: "4",
-                must: false,
+                optional: true,
                 desc: "输入不同的 n 可以作为不同的图片输出",
             },
             {
                 key: "shape",
                 value: "circle",
-                must: false,
+                optional: true,
                 desc: "输入不同的 n 可以作为不同的图片输出",
             },
         ],
