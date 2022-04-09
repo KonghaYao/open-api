@@ -19,7 +19,9 @@
             <div class="w-full text-2xl">API 指示器</div>
             <div class="flex flex-row justify-between my-4">
                 <span class="text-xl flex-none bg-sky-400 text-white tag">完整 URL</span>
-                <span class="font-code overflow-x-auto whitespace-nowrap mx-8">{{ store.path }}</span>
+                <span
+                    class="font-code overflow-x-auto whitespace-nowrap mx-8 flex-grow"
+                >{{ store.path }}</span>
                 <Icon class="bg-lime-400 text-white px-2 text-xl m-1">content_copy</Icon>
                 <span
                     class="text-xl bg-green-400 text-white tag"
@@ -58,7 +60,7 @@
                 <span class="text-xl flex-none bg-sky-400 text-white tag">完整 URL</span>
 
                 <span
-                    class="font-code overflow-x-auto whitespace-nowrap mx-8"
+                    class="font-code overflow-x-auto whitespace-nowrap mx-8 flex-grow"
                 >{{ store.result.path }}</span>
                 <button
                     class="p-2 flex-none bg-sky-400 text-white hover:brightness-95 transition-all"

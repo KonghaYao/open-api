@@ -36,5 +36,5 @@ export interface Data {
     link: string;
     request: request;
     /** 返回的数据将以什么方式进行展示 */
-    resultType: "text" | "file" | "image" | "json";
+    resultType: "text" | "file" | "image" | "json" | "music" | "video";
 }

@@ -51,7 +51,9 @@ const componentMap: { [key in Data['resultType']]: () => any } = Object.entries(
     text: () => import('./text.vue'),
     file: () => import('./file.vue'),
     json: () => import('./json.vue'),
-    image: () => import('./image.vue')
+    image: () => import('./image.vue'),
+    music: () => import('./music.vue'),
+    video: () => import('./video.vue')
 }).reduce((col, [key, value]) => {
     col[key] = defineAsyncComponent(value as any)
     return col
