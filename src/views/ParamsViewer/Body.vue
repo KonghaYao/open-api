@@ -4,8 +4,8 @@
         class="w-full"
         is-slot-mode
         :columns="store.columns"
-        :rows="store.data!.request.pathParams"
-        :total="store.data!.request.pathParams!.length"
+        :rows="store.data!.request.body"
+        :total="store.data!.request.body!.length"
         isHidePaging
     >
         <template v-slot:key="data">{{ data.value.key }}</template>
@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { useViewerStore } from './store'
+import { useViewerStore } from '../store'
 import TableLite from "vue3-table-lite/ts";
 const store = useViewerStore()
 

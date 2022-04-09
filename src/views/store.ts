@@ -10,8 +10,9 @@ const Babel = (window as any).Babel as typeof BabelModule;
 /** 加载 worker */
 import "https://unpkg.com/comlink/dist/umd/comlink.js";
 import worker from "../Evaluate/index?worker";
+import { getDataFromAPI } from "@/Evaluate/getDataFromAPI";
 const { wrap } = (window as any).Comlink;
-const api = wrap(new worker());
+const api = wrap(new worker()) as typeof getDataFromAPI;
 
 export const useViewerStore = defineStore("viewer", {
     state: () => {
@@ -39,8 +40,12 @@ export const useViewerStore = defineStore("viewer", {
                 },
             ] as const,
             data: null as null | Data,
-            userInput: {},
-            result: {},
+            result: {
+                isReturn: false,
+            } as {
+                isReturn: boolean;
+                data?: Blob;
+            },
         };
     },
     actions: {
@@ -54,7 +59,11 @@ export const useViewerStore = defineStore("viewer", {
             this.data = (await Eval(output.code)).default;
         },
         async checkAPI() {
-            this.result = await api(this.data, this.userInput);
+            if (this.data) {
+                const data = JSON.parse(JSON.stringify(this.data));
+                this.result.data = await api(data, {});
+                this.result.isReturn = true;
+            }
         },
     },
 });

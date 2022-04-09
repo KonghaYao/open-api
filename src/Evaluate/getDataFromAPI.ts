@@ -1,10 +1,7 @@
 import { compile } from "path-to-regexp";
 import { Data, ParamsCell, request } from "../../public/data/define";
 
-export async function getDataFromAPI(
-    { request, resultType }: Data,
-    defineRequest: any
-) {
+export async function getDataFromAPI({ request }: Data, defineRequest: any) {
     const path = getPath(request, defineRequest);
     let body = null;
     if (request.methods === "post") {
@@ -20,12 +17,8 @@ export async function getDataFromAPI(
     const result = await fetch(path, {
         method: request.methods,
         body,
-    }).then((res): Promise<Blob | string> => {
-        if (resultType === "text" || resultType === "json") {
-            return res.text();
-        } else {
-            return res.blob();
-        }
+    }).then((res): Promise<Blob> => {
+        return res.blob();
     });
     return result;
 }

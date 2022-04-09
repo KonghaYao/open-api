@@ -1,6 +1,6 @@
 
 <template>
-    <div class="h-full w-full flex flex-col p-8" v-if="store.data">
+    <div class="h-full w-full flex flex-col p-8 overflow-y-auto" v-if="store.data">
         <header class="text-lg flex p-4">
             <a
                 class="hover:text-sky-400 transition-colors"
@@ -31,6 +31,15 @@
                 </tabs>
             </div>
         </main>
+        <nav>
+            <div>结果展示</div>
+            <Result
+                v-if="store.result.isReturn"
+                :type="store.data.resultType"
+                :data="store.result.data!"
+            ></Result>
+            <div v-else>没有返回</div>
+        </nav>
     </div>
 </template>
 
@@ -38,18 +47,15 @@
 import { onMounted, ref } from 'vue';
 import { Tag } from 'vant'
 import { useViewerStore } from './store'
-import TableLite from "vue3-table-lite/ts";
 import { Tab, Tabs } from 'vant';
-import Params from './Params.vue';
-import QueryParams from './QueryParams.vue';
-import Body from './Body.vue';
+import Params from './ParamsViewer/Params.vue';
+import QueryParams from './ParamsViewer/QueryParams.vue';
+import Body from './ParamsViewer/Body.vue';
+import Result from './ResultViewer/index.vue'
 const active = ref('Params')
 const store = useViewerStore()
 
-
-
 onMounted(() => {
-    store.prepareData()
-
+    store.prepareData().then(store.checkAPI)
 })
 </script>
