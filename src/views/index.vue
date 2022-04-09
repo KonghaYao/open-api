@@ -8,7 +8,10 @@
                 target="blank"
             >{{ store.data.title }}</a>
             <div class="flex-grow flex justify-end">
-                <tag class="cursor-pointer m-2" v-for="item in store.data.tags">{{ item }}</tag>
+                <span
+                    class="text-sm bg-green-400 text-white tag"
+                    v-for="item in store.data.tags"
+                >{{ item }}</span>
             </div>
         </header>
         <main class="flex flex-col">
