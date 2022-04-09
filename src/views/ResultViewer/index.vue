@@ -29,6 +29,7 @@ import Icon from '@konghayao/vue-material-icons';
 import { useViewerStore } from '../store';
 import { saveAs } from 'file-saver'
 import mime2ext from 'mime2ext'
+import { getFilenameFromPath } from './filename'
 const store = useViewerStore()
 
 const props = defineProps<{
@@ -37,13 +38,15 @@ const props = defineProps<{
 }>()
 
 const download = () => {
+    const name = getFilenameFromPath(store.result.path)
     if (props.data) {
-        saveAs(props.data, new Date().getTime() + '.' + mime2ext(props.data.type))
+        saveAs(props.data, name || new Date().getTime() + '.' + mime2ext(props.data.type))
     } else {
-        saveAs(store.result.path, new Date().getTime() + '.jpg')
+        saveAs(store.result.path, name || new Date().getTime() + '.jpg')
     }
 }
 
+/**动态加载组件 */
 const componentMap: { [key in Data['resultType']]: () => any } = Object.entries({
     text: () => import('./text.vue'),
     file: () => import('./file.vue'),

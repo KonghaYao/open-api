@@ -80,6 +80,6 @@ const active = ref('Params')
 const store = useViewerStore()
 
 onMounted(() => {
-    store.prepareData('./data/doodleipsum.ts').then(store.checkAPI)
+    store.prepareData().then(store.checkAPI)
 })
 </script>
