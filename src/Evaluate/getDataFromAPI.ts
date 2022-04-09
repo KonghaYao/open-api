@@ -28,6 +28,8 @@ export async function getDataFromAPI({ request }: Data, defineRequest: any) {
 function transCellToObj(cell?: ParamsCell[]) {
     if (cell && cell.length) {
         return cell.reduce((col, cur) => {
+            //! 修复 path-to-regexp 在使用 空字符串 报错问题
+            if (cur.value === "") return col;
             col[cur.key] = cur.value;
 
             return col;

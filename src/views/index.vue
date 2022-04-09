@@ -27,16 +27,25 @@
             </div>
             <div class="font-code bg-gray-50">
                 <tabs v-model:active="active">
-                    <tab title="Path Params">
+                    <tab
+                        title="Path Params"
+                        v-if="store.data.request.pathParams && store.data.request.pathParams.length"
+                    >
                         <div class="font-normal text-xl">路径参数</div>
                         <QueryParams @refresh="store.refreshPath"></QueryParams>
                     </tab>
-                    <tab title="Query">
+                    <tab
+                        title="Query"
+                        v-if="store.data.request.params && store.data.request.params.length"
+                    >
                         <div class="font-normal text-xl">请求参数</div>
                         <Params @refresh="store.refreshPath"></Params>
                     </tab>
                     <tab title="Header"></tab>
-                    <tab title="Body" v-if="store.data!.request.methods === 'post'">
+                    <tab
+                        title="Body"
+                        v-if="store.data!.request.methods === 'post' && store.data.request.body && store.data.request.body.length"
+                    >
                         <Body></Body>
                     </tab>
                 </tabs>

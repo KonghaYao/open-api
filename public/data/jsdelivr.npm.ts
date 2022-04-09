@@ -27,7 +27,7 @@ const data: Data = {
                 optional: true,
             },
         ],
-        params: [{ key: "data", value: "1232" }],
+        params: [],
         body: [],
         bodyType: "json",
     },
