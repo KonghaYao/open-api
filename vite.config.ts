@@ -27,14 +27,15 @@ export default ({ mode }) => {
             styleImport({
                 resolves: [VantResolve()],
             }),
-            viteStaticCopy({
-                targets: [
-                    {
-                        src: "data/*",
-                        dest: "data",
-                    },
-                ],
-            }),
+            mode !== "production" &&
+                viteStaticCopy({
+                    targets: [
+                        {
+                            src: "data/*",
+                            dest: "data",
+                        },
+                    ],
+                }),
         ],
     });
 };
