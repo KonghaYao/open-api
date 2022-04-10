@@ -1,9 +1,16 @@
 export type Tags = "CDN" | "WEB";
+
+export type OptionalValue = {
+    value: string;
+    desc: string;
+};
 export type ParamsCell = {
     /** 键值 */
     key: string;
     /** 默认测试的值 */
-    value: string;
+    value: string | OptionalValue[];
+    /** input 的类型，默认为 text */
+    type?: string;
     /** 是否必须填入该参数，默认为 true */
     optional?: boolean;
     /** 校验输入是否正确 */
@@ -16,6 +23,7 @@ export type request = {
     root: string;
     /** 请求方式，默认为 get */
     methods?: "get" | "post";
+    headers?: ParamsCell[];
     /** 路径参数 */
     pathParams?: ParamsCell[];
     /** root 的参数 */

@@ -18,6 +18,7 @@
         "autoprefixer": "^10.4.4",
         "axios": "^0.26.1",
         "comlink": "^4.3.1",
+        "fetch-headers": "^3.0.1",
         "file-saver": "^2.0.5",
         "lodash-es": "^4.17.21",
         "mime2ext": "^2.0.0",

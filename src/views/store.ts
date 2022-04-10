@@ -17,30 +17,9 @@ const api = wrap(new worker()) as typeof getDataFromAPI;
 export const useViewerStore = defineStore("viewer", {
     state: () => {
         return {
-            columns: [
-                {
-                    label: "必填",
-                    field: "optional",
-                    width: "6%",
-                },
-                {
-                    label: "变量名",
-                    field: "key",
-                    width: "20%",
-                },
-                {
-                    label: "测试参数",
-                    field: "value",
-                    width: "20%",
-                },
-                {
-                    label: "描述",
-                    field: "desc",
-                    width: "20%",
-                },
-            ] as const,
             path: "",
             data: null as null | Data,
+            originData: null as null | Data,
             result: {
                 isReturn: false,
                 data: null as null | Blob,
@@ -57,7 +36,9 @@ export const useViewerStore = defineStore("viewer", {
                 presets: [Babel.availablePresets["typescript"]],
             });
             console.log(output);
-            this.data = (await Eval(output.code)).default;
+            const data = (await Eval(output.code)).default;
+            this.data = JSON.parse(JSON.stringify(data));
+            this.originData = data;
         },
         refreshPath() {
             if (this.data) {

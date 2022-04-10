@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 import { computed, defineAsyncComponent } from 'vue'
-import { Data } from 'public/data/define';
+import { Data } from '../../../public/data/define';
 import Icon from '@konghayao/vue-material-icons';
 import { useViewerStore } from '../store';
 import { saveAs } from 'file-saver'

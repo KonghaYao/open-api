@@ -34,21 +34,42 @@
                         v-if="store.data.request.pathParams && store.data.request.pathParams.length"
                     >
                         <div class="font-normal text-xl">路径参数</div>
-                        <QueryParams @refresh="store.refreshPath"></QueryParams>
+                        <ParamsList
+                            :origin-params="store.originData!.request.pathParams!"
+                            :params="store.data.request.pathParams"
+                            @refresh="store.refreshPath"
+                        ></ParamsList>
                     </tab>
                     <tab
                         title="Query"
                         v-if="store.data.request.params && store.data.request.params.length"
                     >
                         <div class="font-normal text-xl">请求参数</div>
-                        <Params @refresh="store.refreshPath"></Params>
+                        <ParamsList
+                            :origin-params="store.originData!.request.params!"
+                            :params="store.data.request.params"
+                            @refresh="store.refreshPath"
+                        ></ParamsList>
                     </tab>
-                    <tab title="Header"></tab>
+                    <tab
+                        title="Header"
+                        v-if="store.data!.request.headers && store.data.request.headers.length"
+                    >
+                        <ParamsList
+                            :origin-params="store.originData!.request.headers!"
+                            :params="store.data.request.headers"
+                            @refresh="store.refreshPath"
+                        ></ParamsList>
+                    </tab>
                     <tab
                         title="Body"
                         v-if="store.data!.request.methods === 'post' && store.data.request.body && store.data.request.body.length"
                     >
-                        <Body></Body>
+                        <ParamsList
+                            :origin-params="store.originData!.request.body!"
+                            :params="store.data.request.body"
+                            @refresh="store.refreshPath"
+                        ></ParamsList>
                     </tab>
                 </tabs>
             </div>
@@ -82,15 +103,13 @@
 import { onMounted, ref } from 'vue';
 import { useViewerStore } from './store'
 import { Tab, Tabs } from 'vant';
-import Params from './ParamsViewer/Params.vue';
-import QueryParams from './ParamsViewer/QueryParams.vue';
-import Body from './ParamsViewer/Body.vue';
 import Result from './ResultViewer/index.vue'
 import Icon from "@konghayao/vue-material-icons"
+import ParamsList from './ParamsViewer/ParamsList.vue';
 const active = ref('Params')
 const store = useViewerStore()
 
 onMounted(() => {
-    store.prepareData().then(store.checkAPI)
+    store.prepareData('./data/hitokoto.ts').then(store.checkAPI)
 })
 </script>

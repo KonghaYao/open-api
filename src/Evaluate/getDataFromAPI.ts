@@ -30,7 +30,11 @@ function transCellToObj(cell?: ParamsCell[]) {
         return cell.reduce((col, cur) => {
             //! 修复 path-to-regexp 在使用 空字符串 报错问题
             if (cur.value === "") return col;
-            col[cur.key] = cur.value;
+            if (typeof cur.value === "string") {
+                col[cur.key] = cur.value;
+            } else if (cur.value.length) {
+                col[cur.key] = cur.value[0].value;
+            }
 
             return col;
         }, {} as any);
