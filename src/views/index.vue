@@ -106,10 +106,18 @@ import { Tab, Tabs } from 'vant';
 import Result from './ResultViewer/index.vue'
 import Icon from "@konghayao/vue-material-icons"
 import ParamsList from './ParamsViewer/ParamsList.vue';
+import { useRoute, useRouter } from 'vue-router';
 const active = ref('Params')
 const store = useViewerStore()
-
+const route = useRoute()
+const router = useRouter()
 onMounted(() => {
-    store.prepareData('./data/hitokoto.ts').then(store.checkAPI)
+    const api = route.params.api
+    if (api) {
+        // 直接通过 路由参数调用 api
+        store.prepareData(`./data/${api}.ts`).then(store.checkAPI)
+    } else {
+        router.push('/404')
+    }
 })
 </script>
