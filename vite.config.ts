@@ -31,7 +31,7 @@ export default ({ mode }) => {
                 targets: [
                     {
                         src: "data/*",
-                        dest: "public/data",
+                        dest: "data",
                     },
                 ],
             }),
