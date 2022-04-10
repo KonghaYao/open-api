@@ -2,10 +2,14 @@ import { createRouter, createWebHashHistory } from "vue-router";
 
 const routes = [
     {
-        name: "index",
-        path: "/api/:api",
+        name: "home",
+        path: "/index",
         component: () => import("../views/index.vue"),
-        children: [],
+    },
+    {
+        name: "api",
+        path: "/api/:api",
+        component: () => import("../views/api.vue"),
     },
     {
         name: "404",
@@ -14,7 +18,7 @@ const routes = [
         children: [],
     },
     // 重定向路由
-    { path: "/:pathMatch(.*)*", redirect: "/404" },
+    { path: "/:pathMatch(.*)*", redirect: "/index" },
 ];
 export default createRouter({
     history: createWebHashHistory(),
