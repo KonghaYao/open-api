@@ -6,7 +6,7 @@ import styleImport, { VantResolve } from "vite-plugin-style-import";
 export default defineConfig({
     define: {
         __baseURL__: JSON.stringify(
-            "https://cdn.jdselivr.net/gh/konghayao/open-api/"
+            "https://cdn.jsdelivr.net/gh/KonghaYao/open-api/"
         ),
     },
     resolve: {

@@ -115,7 +115,7 @@ onMounted(() => {
     const api = route.params.api
     if (api) {
         // 直接通过 路由参数调用 api
-        store.prepareData(`./data/${api}.ts`).then(store.checkAPI)
+        store.prepareData(__baseURL__ + `public/data/${api}.ts`).then(store.checkAPI)
     } else {
         router.push('/404')
     }
