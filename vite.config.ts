@@ -5,7 +5,9 @@ import styleImport, { VantResolve } from "vite-plugin-style-import";
 // https://vitejs.dev/config/
 export default defineConfig({
     define: {
-        __baseURL__: JSON.stringify("http://127.0.0.1:4523/mock/807294"),
+        __baseURL__: JSON.stringify(
+            "https://cdn.jdselivr.net/gh/konghayao/open-api/"
+        ),
     },
     resolve: {
         alias: {
