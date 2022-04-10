@@ -4,7 +4,7 @@ import { defineStore } from "pinia";
 import BabelModule from "@babel/standalone";
 import "https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js";
 import { Eval } from "../Evaluate/eval";
-import { Data } from "public/data/define";
+import { Data } from "data/define";
 const Babel = (window as any).Babel as typeof BabelModule;
 
 /** 加载 worker */

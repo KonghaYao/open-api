@@ -1,5 +1,5 @@
 import { compile } from "path-to-regexp";
-import { Data, ParamsCell, request } from "../../public/data/define";
+import { Data, ParamsCell, request } from "../../data/define";
 
 export async function getDataFromAPI({ request }: Data, defineRequest: any) {
     const path = getPath(request, defineRequest);
