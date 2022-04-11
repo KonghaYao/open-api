@@ -33,6 +33,7 @@ function transCellToObj(cell?: ParamsCell[]) {
             if (typeof cur.value === "string") {
                 col[cur.key] = cur.value;
             } else if (cur.value.length) {
+                if (cur.value[0].value === "") return col;
                 col[cur.key] = cur.value[0].value;
             }
 
@@ -64,7 +65,7 @@ export function getPath(request: request, defineRequest: any) {
         transCellToObj(request.pathParams),
         defineRequest.params
     );
-    console.log(params);
+    console.log(request.pathParams, params);
     let url = toPath(params);
     if (request.params && request.params.length) {
         /** 写入请求参数 */

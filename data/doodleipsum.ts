@@ -6,14 +6,59 @@ const data: Data = {
     link: "https://baidu.com",
     tags: ["CDN", "WEB"],
     request: {
-        root: "https://doodleipsum.com/:size/:type",
+        root: "https://doodleipsum.com/:size/:type?",
 
         pathParams: [
             {
                 key: "size",
                 value: "700x400",
             },
-            { key: "type", value: "flat" },
+            {
+                key: "type",
+                value: [
+                    {
+                        value: "",
+                        desc: "随机风格",
+                    },
+                    {
+                        value: "flat",
+                        desc: "平面风格",
+                    },
+                    {
+                        value: "hand-drawn",
+                        desc: "手绘风格",
+                    },
+                    {
+                        value: "outline",
+                        desc: "边线风格",
+                    },
+                    {
+                        value: "abstract",
+                        desc: "抽象风格",
+                    },
+                    {
+                        value: "avatar",
+                        desc: "",
+                    },
+                    {
+                        value: "avatar-2",
+                        desc: "",
+                    },
+                    {
+                        value: "avatar-3",
+                        desc: "",
+                    },
+                    {
+                        value: "avatar-4",
+                        desc: "",
+                    },
+                    {
+                        value: "avatar-5",
+                        desc: "",
+                    },
+                ],
+                optional: true,
+            },
         ],
         params: [
             {
