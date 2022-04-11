@@ -6,12 +6,6 @@
         "skipLibCheck": true,
         "allowSyntheticDefaultImports": true
     },
-    "ts-node": {
-        // It is faster to skip typechecking.
-        // Remove if you want ts-node to do typechecking.
-        "transpileOnly": true,
 
-        "files": true
-    },
-    "include": ["vite.config.ts", "./genDataList.ts"]
+    "include": ["vite.config.ts"]
 }

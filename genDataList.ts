@@ -1,6 +1,4 @@
-#!/usr/bin/env ts-node
 import fs from "fs";
-import { Data } from "./data/define";
 
 // 读取文件夹内的文件
 const files = fs.readdirSync("./data");
@@ -15,7 +13,7 @@ const promise = files
     });
 
 // 等候执行完成后保存数据
-Promise.all(promise).then((res: (Data & { Path: string })[]) => {
+Promise.all(promise).then((res) => {
     const allData = res.map(({ title, desc, link, tags, Path }) => ({
         title,
         desc,

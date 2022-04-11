@@ -14,9 +14,14 @@ import { getDataFromAPI, getPath } from "../Evaluate/getDataFromAPI";
 const { wrap } = (window as any).Comlink;
 const api = wrap(new worker()) as typeof getDataFromAPI;
 
+export type APIDetail = Pick<Data, "tags" | "title" | "link" | "desc"> & {
+    Path: string;
+};
+
 export const useViewerStore = defineStore("viewer", {
     state: () => {
         return {
+            allAPI: [] as APIDetail[],
             path: "",
             data: null as null | Data,
             originData: null as null | Data,

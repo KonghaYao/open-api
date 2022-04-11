@@ -6,11 +6,10 @@
         "dev": "vite --mode development",
         "build": "vue-tsc --noEmit && vite build --mode production",
         "build:test": "vite --mode production",
-        "build:data": "ts-node-esm ./genDataList.ts",
+        "build:data": " ts-node --esm ./genDataList.ts",
         "preview": "vite preview",
         "test": "vue-tsc --noEmit --skipLibCheck"
     },
-    "type": "module",
     "dependencies": {
         "@babel/standalone": "^7.17.9",
         "@konghayao/vue-material-icons": "^1.0.4",

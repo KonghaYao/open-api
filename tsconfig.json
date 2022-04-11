@@ -15,6 +15,14 @@
         "baseUrl": "./",
         "paths": { "@/*": ["src/*"], "@components/": ["src/components/*"] }
     },
+    "ts-node": {
+        "transpileOnly": true,
+        //需要声明需要的文件为 esm 模式，这样才不会干扰 整个项目的 commonjs 环境
+        "moduleTypes": {
+            "./genDataList.ts": "esm",
+            "./data/*.ts": "esm"
+        }
+    },
     "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
     "exclude": ["node_modules"],
     "references": [{ "path": "./tsconfig.node.json" }]
