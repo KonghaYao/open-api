@@ -1,7 +1,7 @@
 
 <template>
 
-    <main class="flex flex-col col-span-2 my-4">
+    <main class="flex flex-col ">
         <div class="w-full text-2xl">API 指示器</div>
         <div class="flex flex-row justify-between my-4">
             <span class="text-clip flex-none bg-sky-400 text-white tag">完整 URL</span>

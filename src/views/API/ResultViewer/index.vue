@@ -1,7 +1,7 @@
 
 
 <template>
-    <div class="flex flex-col">
+    <div class="flex flex-col  h-full">
         <div class="flex items-center select-none">
             <span class="tag  h-full bg-orange-600 text-white">类型：{{ props.type.toUpperCase() }}</span>
 
@@ -11,7 +11,7 @@
                 <Icon>download</Icon>下载
             </div>
         </div>
-        <div class="w-full overflow-y-auto">
+        <div class="w-full overflow-y-auto flex-grow">
             <component :is="usingComponent" :data="props.data"></component>
         </div>
     </div>
@@ -53,8 +53,11 @@ const componentMap: { [key in Data['resultType']]: () => any } = Object.entries(
     col[key] = defineAsyncComponent(value as any)
     return col
 }, {} as any)
+
+
 const usingComponent = computed(() => {
     if (props.type === 'text' && props.data.type.includes('json')) {
+        // 强制使用 json 渲染
         return componentMap['json']
     } else {
         return componentMap[props.type]

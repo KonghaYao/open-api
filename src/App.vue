@@ -8,7 +8,8 @@
 
 <style>
 @import url("./index.css");
-@import url("https://cdn.jsdelivr.net/gh/KonghaYao/chinese-free-web-font-storage/build/白无常可可体-Bold/result.css");
+@import url("https://cdn.jsdelivr.net/gh/KonghaYao/chinese-free-web-font-storage/build/优设标题黑/result.css");
+@import url("https://cdn.jsdelivr.net/gh/KonghaYao/chinese-free-web-font-storage/build/站酷仓耳渔阳体-W02/result.css");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -23,6 +24,7 @@
 
     overflow: hidden;
 }
+
 html,
 body {
     overflow: hidden;

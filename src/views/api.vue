@@ -1,6 +1,6 @@
 
 <template>
-    <div class="h-full w-full flex flex-col m-8 p-4 shadow-lg shadow-gray-300 overflow-y-auto" v-if="store.data">
+    <div class=" flex flex-col m-8 p-4 shadow-lg shadow-gray-300 overflow-hidden rounded-2xl w-full" v-if="store.data">
         <!--  头部信息展示 -->
         <header class="text-3xl flex mb-4">
             <a class="hover:text-sky-400 transition-colors" :href="store.data!.link" target="blank">{{
@@ -10,9 +10,9 @@
                 <span class="text-sm bg-green-400 text-white tag" v-for="item in store.data.tags">{{ item }}</span>
             </div>
         </header>
-        <nav class="grid grid-cols-3 gap-8  ">
-            <ParamsEditor></ParamsEditor>
-            <ReturnVue></ReturnVue>
+        <nav class="flex flex-grow overflow-hidden">
+            <ParamsEditor class="w-2/3 flex-none "></ParamsEditor>
+            <ReturnVue class="flex-grow border-l border-gray-400 p-2"></ReturnVue>
         </nav>
 
     </div>
