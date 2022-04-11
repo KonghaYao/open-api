@@ -3,11 +3,11 @@
 <template>
     <div class="flex flex-col  h-full">
         <div class="flex items-center select-none">
-            <span class="tag  h-full bg-orange-600 text-white">类型：{{ props.type.toUpperCase() }}</span>
+            <span class="tag  bg-orange-600 text-white">类型：{{ props.type.toUpperCase() }}</span>
 
-            <div class="tag  h-full bg-pink-600 text-white">耗时：{{ store.result.duration }} ms</div>
+            <div class="tag  bg-pink-600 text-white">耗时：{{ store.result.duration }} ms</div>
 
-            <div class="button-like tag  h-full cursor-pointer bg-purple-600 text-white flex" @click="download">
+            <div class="button-like tag  cursor-pointer bg-purple-600 text-white flex" @click="download">
                 <Icon>download</Icon>下载
             </div>
         </div>
