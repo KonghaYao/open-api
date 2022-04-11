@@ -11,7 +11,7 @@
 </style>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import VueJsonPretty from 'vue-json-pretty';
 import 'vue-json-pretty/lib/styles.css';
 
@@ -20,9 +20,11 @@ const props = defineProps<{
 }>()
 const json = ref({})
 const path = ref('')
-onMounted(async () => {
-    const text = await props.data.text()
 
+const refreshData = async () => {
+    const text = await props.data.text()
     json.value = JSON.parse(text)
-})
+}
+watch(() => props.data, refreshData)
+onMounted(refreshData)
 </script>

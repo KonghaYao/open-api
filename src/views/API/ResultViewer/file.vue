@@ -12,7 +12,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
-import { useViewerStore } from '../store';
+import { useViewerStore } from '../../store';
 import prettyBytes from 'pretty-bytes';
 import Icon from '@konghayao/vue-material-icons';
 import { getFilenameFromPath } from './filename'

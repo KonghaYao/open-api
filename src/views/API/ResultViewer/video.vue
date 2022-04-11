@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { useViewerStore } from '../store';
+import { useViewerStore } from '../../store';
 const store = useViewerStore()
 const props = defineProps<{
     data: Blob

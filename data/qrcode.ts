@@ -17,7 +17,7 @@ const data: Data = {
             },
             {
                 key: "size",
-                value: "64",
+                value: "128",
                 optional: true,
                 desc: "像素大小",
             },

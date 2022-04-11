@@ -4,7 +4,8 @@
     <pre>{{ text }}</pre>
 </template>
 
-<script setup lang="ts">import { onMounted, ref } from 'vue';
+<script setup lang="ts">
+import { onMounted, ref } from 'vue';
 
 
 const props = defineProps<{

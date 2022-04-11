@@ -20,7 +20,7 @@ const data: Data = {
                 key: "i",
                 value: "f0680f8b2b8802c8321a580f63ec3d40",
                 optional: true,
-                desc: "主体图片的 id",
+                desc: "主体图片的 id,不填为随机生成",
             },
             {
                 key: "bg",
