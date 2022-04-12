@@ -3,12 +3,15 @@
     <div class="h-screen w-screen flex flex-col ">
         <header class="flex text-3xl cursor-default  p-4 bg-gray-600 text-white"> OPEN API </header>
 
-        <main class="flex-grow bg-gray-50 flex flex-wrap ">
-            <div v-for="(item, index) in store.allAPI"
-                class="relative m-8 w-1/6 rounded-2xl bg-white  p-4 shadow-lg shadow-gray-200 hover:shadow-xl hover:scale-110 hover:shadow-gray-200 transition-all transform-gpu duration-500 overflow-hidden">
+        <transition-group tag="main" name="list"
+            class="flex-grow bg-gray-50 flex flex-wrap overflow-y-auto transition-transform duration-500 justify-evenly">
+
+            <!--  图片方格 -->
+            <div v-for="(item, index) in store.allAPI" :key="item.Path"
+                class="relative m-8 w-48 h-64 rounded-2xl bg-white p-4 shadow-lg shadow-gray-200 transform-gpu hover:shadow-xl hover:scale-110 hover:shadow-gray-200 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
                 <div class="z-10 h-full w-full flex flex-col">
                     <div @click="jumpTo(item.Path)" class="text-lg cursor-pointer">{{ item.title }}</div>
-                    <div class="flex-grow text-sm font-text">
+                    <div class="flex-grow text-sm font-text overflow-y-auto">
                         {{ item.desc }}
                     </div>
                     <div class="flex text-xs">
@@ -16,26 +19,39 @@
                     </div>
                 </div>
                 <div class="absolute -z-10 h-full w-full top-0 left-0 overflow-hidden opacity-30">
-                    <img class="m-auto" :src="'https://doodleipsum.com/300x400/flat?n=' + index" alt="">
+                    <van-image lazy-load class="m-auto" :src="'https://doodleipsum.com/300x400/flat?n=' + index">
+                    </van-image>
                 </div>
             </div>
-        </main>
+        </transition-group>
         <footer class="bg-gray-600 text-white p-4">
             所有 API 搜集自 网络，皆为前端可以直接调用的 API 接口，专为前端学习之用。
         </footer>
     </div>
 </template>
 
+<style scoped>
+.list-enter-from,
+.list-leave-to {
+    @apply opacity-0 translate-y-12
+}
+</style>
+
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import { useViewerStore } from './store'
-import { Tab, Tabs } from 'vant';
-import { useRoute, useRouter } from 'vue-router';
+import { onMounted } from 'vue';
+import { Image as vanImage } from 'vant'
+import { APIDetail, useViewerStore } from './store'
+import { useRouter } from 'vue-router';
 
 const store = useViewerStore()
 onMounted(async () => {
 
-    store.allAPI = await fetch('./data/data.json').then((res) => res.json())
+    store.allAPI = []
+    const api = await fetch('./data/data.json').then<APIDetail[]>((res) => res.json())
+    api.forEach((i, index) => {
+        setTimeout(() => store.allAPI.push(i), index * 100)
+    })
+
 })
 const router = useRouter()
 const jumpTo = (id: string) => {
