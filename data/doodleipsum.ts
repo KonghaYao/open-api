@@ -3,8 +3,8 @@ import { Data } from "./define";
 const data: Data = {
     title: "Doodleipsum 插画",
     desc: "Doodleipsum 提供了免费的平面风格的插画图片",
-    link: "https://baidu.com",
-    tags: ["CDN", "WEB"],
+    link: "https://doodleipsum.com",
+    tags: ["插画", "Mock"],
     request: {
         root: "https://doodleipsum.com/:size/:type?",
 
@@ -12,6 +12,7 @@ const data: Data = {
             {
                 key: "size",
                 value: "700x400",
+                desc: "生成图片的宽高，当只有一个数字时是固定宽度，x500 是固定高度",
             },
             {
                 key: "type",
@@ -38,23 +39,23 @@ const data: Data = {
                     },
                     {
                         value: "avatar",
-                        desc: "",
+                        desc: "头像风格 1",
                     },
                     {
                         value: "avatar-2",
-                        desc: "",
+                        desc: "头像风格 2",
                     },
                     {
                         value: "avatar-3",
-                        desc: "",
+                        desc: "头像风格 3",
                     },
                     {
                         value: "avatar-4",
-                        desc: "",
+                        desc: "头像风格 4",
                     },
                     {
                         value: "avatar-5",
-                        desc: "",
+                        desc: "头像风格 5",
                     },
                 ],
                 optional: true,
@@ -71,6 +72,7 @@ const data: Data = {
                 key: "bg",
                 value: "FAFAFA",
                 optional: true,
+                desc: "背景色，十六进制",
             },
             {
                 key: "n",
@@ -82,11 +84,21 @@ const data: Data = {
                 key: "shape",
                 value: "circle",
                 optional: true,
-                desc: "输入不同的 n 可以作为不同的图片输出",
+                desc: "图片的外部形状，只能是 circle",
+            },
+            {
+                key: "sat",
+                value: "0",
+                optional: true,
+                desc: "灰度，负数为灰色 -100 - 0",
+            },
+            {
+                key: "blur",
+                value: "0",
+                optional: true,
+                desc: "模糊程度 0-100",
             },
         ],
-        body: [],
-        bodyType: "json",
     },
     resultType: "image",
 };

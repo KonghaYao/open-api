@@ -2,13 +2,12 @@ import { Data } from "./define";
 
 const data: Data = {
     title: "一言",
-    desc: "一言",
-    link: "https://developer.hitokoto.cn/sentence/#%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E",
-    tags: ["CDN", "WEB"],
+    desc: "简单来说，一言指的就是一句话，可以是动漫中的台词，也可以是网络上的各种小段子。 或是感动，或是开心，有或是单纯的回忆。来到这里，留下你所喜欢的那一句句话，与大家分享，这就是一言存在的目的。",
+    link: "https://developer.hitokoto.cn/sentence/",
+    tags: ["文本", "Mock"],
     request: {
         root: "https://v1.hitokoto.cn",
 
-        pathParams: [],
         params: [
             {
                 key: "c",
@@ -78,8 +77,6 @@ const data: Data = {
                 desc: "返回句子的最大长度（包含）",
             },
         ],
-        body: [],
-        bodyType: "json",
     },
     resultType: "json",
 };

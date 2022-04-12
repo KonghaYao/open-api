@@ -1,4 +1,4 @@
-export type Tags = "CDN" | "WEB";
+export type Tags = "CDN" | "WEB" | "Mock" | "插画" | "风景画" | "文本";
 
 export type OptionalValue = {
     value: string;
@@ -31,7 +31,7 @@ export type request = {
     /** post 传输的数据 */
     body?: ParamsCell[];
     /** 传输的 body 的类型，在 POST 的时候有用 */
-    bodyType: "urlencoded" | "json" | "form";
+    bodyType?: "urlencoded" | "json" | "form";
 };
 export interface Data {
     /** API 的标题 */
