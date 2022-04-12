@@ -4,18 +4,22 @@ import { Data, ParamsCell, request } from "../../data/define";
 export async function getDataFromAPI({ request }: Data, defineRequest: any) {
     const path = getPath(request, defineRequest);
     let body = null;
+    let headers = new Headers();
     if (request.methods === "post") {
         switch (request.bodyType) {
             case "urlencoded":
                 body = getURLSearchParams(transCellToObj(request.body!));
             case "form":
-            case "json":
+                body = createForm(transCellToObj(request.body)!);
+            default:
                 body = JSON.stringify(transCellToObj(request.body!));
+                headers.set("content-type", "application/json");
         }
     }
 
     const result = await fetch(path, {
         method: request.methods,
+        headers,
         body,
     })
         .then((res): Promise<Blob> => {
@@ -24,6 +28,15 @@ export async function getDataFromAPI({ request }: Data, defineRequest: any) {
         .catch(() => null);
     return [path, result] as [string, Blob | null];
 }
+
+const createForm = (obj: any) => {
+    const form = new FormData();
+    Object.entries(obj).forEach(([key, value]) => {
+        form.append(key, value as string | Blob);
+    });
+    return form;
+};
+
 /** 转化 Cell 为对象 */
 function transCellToObj(cell?: ParamsCell[]) {
     if (cell && cell.length) {

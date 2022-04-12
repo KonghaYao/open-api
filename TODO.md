@@ -1,9 +1,7 @@
 https://openwhyd.github.io/openwhyd/API#openwhyd-data-export-api
-http://colormind.io/api/
-https://github.com/cheatsnake/emojihub
-https://icon.horse/
+
 https://img.icons8.com/
-https://php-noise.com/
+
 Pixel Encounter
 
 # 文件上传

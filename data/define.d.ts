@@ -4,8 +4,10 @@ export type Tags =
     | "Mock"
     | "插画"
     | "风景画"
+    | "背景图"
     | "文本"
-    | "格式转换";
+    | "格式转换"
+    | "Icon";
 
 export type OptionalValue = {
     value: string;

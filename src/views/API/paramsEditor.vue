@@ -14,31 +14,32 @@
                     "get").toUpperCase()
             }}</span>
         </div>
-        <div class="font-code bg-gray-50">
-            <tabs v-model:active="active">
+        <div class="font-code bg-gray-50 flex-grow overflow-hidden">
+            <tabs v-model:active="active" class="h-full overflow-hidden">
 
                 <!--  路径参数 -->
-                <tab title="Path Params" v-if="store.data.request.pathParams && store.data.request.pathParams.length">
-                    <div class="font-normal text-xl">路径参数</div>
+                <tab class="h-full overflow-auto" title="路径参数"
+                    v-if="store.data.request.pathParams && store.data.request.pathParams.length">
                     <ParamsList :origin-params="store.originData!.request.pathParams!"
                         :params="store.data.request.pathParams" @refresh="store.refreshPath"></ParamsList>
                 </tab>
 
                 <!--  请求参数 -->
-                <tab title="Query" v-if="store.data.request.params && store.data.request.params.length">
-                    <div class="font-normal text-xl">请求参数</div>
+                <tab class="h-full overflow-auto" title="请求参数"
+                    v-if="store.data.request.params && store.data.request.params.length">
                     <ParamsList :origin-params="store.originData!.request.params!" :params="store.data.request.params"
                         @refresh="store.refreshPath"></ParamsList>
                 </tab>
 
                 <!--  Headers 参数 -->
-                <tab title="Header" v-if="store.data!.request.headers && store.data.request.headers.length">
+                <tab class="h-full overflow-auto" title="Header 参数"
+                    v-if="store.data!.request.headers && store.data.request.headers.length">
                     <ParamsList :origin-params="store.originData!.request.headers!" :params="store.data.request.headers"
                         @refresh="store.refreshPath"></ParamsList>
                 </tab>
 
                 <!--  Body 参数 -->
-                <tab title="Body"
+                <tab class="h-full overflow-auto" title="Body 参数"
                     v-if="store.data!.request.methods === 'post' && store.data.request.body && store.data.request.body.length">
                     <ParamsList :origin-params="store.originData!.request.body!" :params="store.data.request.body"
                         @refresh="store.refreshPath"></ParamsList>
@@ -47,6 +48,13 @@
         </div>
     </main>
 </template>
+
+<style scoped>
+:deep(.van-tabs__content) {
+    overflow: hidden;
+    height: 100%;
+}
+</style>
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';

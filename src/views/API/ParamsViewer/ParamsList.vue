@@ -1,37 +1,24 @@
 
 <template>
-    <table-lite
-        class="w-full"
-        is-slot-mode
-        :columns="columns"
-        :rows="originParams"
-        :total="originParams!.length"
-        isHidePaging
-    >
+    <table-lite class="w-full" is-slot-mode :columns="columns" :rows="originParams" :total="originParams!.length"
+        isHidePaging>
         <template v-slot:key="data">{{ data.value.key }}</template>
         <template v-slot:optional="data">
             <checkbox :model-value="!data.value.optional"></checkbox>
         </template>
 
         <template v-slot:value="data">
-            <input
-                type="text"
-                v-if="typeof data.value.value === 'string'"
-                :value="getRef(data.value).value"
-                @input="changeData($event, data.value)"
-            />
+            <input type="text" v-if="typeof data.value.value === 'string'" :value="getRef(data.value).value"
+                @input="changeData($event, data.value)" />
             <select v-else @change="changeData($event, data.value)">
-                <option
-                    :value="val.value"
-                    v-for="val in data.value.value"
-                >{{ val.value }} {{ val.desc }}</option>
+                <option :value="val.value" v-for="val in data.value.value">{{ val.value }} {{ val.desc }}</option>
             </select>
         </template>
     </table-lite>
 </template>
 
 <script setup lang="ts">
-import { ParamsCell } from '../../../public/data/define';
+import { ParamsCell } from '../../../../data/define';
 import { Checkbox } from 'vant';
 import TableLite from "vue3-table-lite/ts";
 
@@ -57,7 +44,6 @@ const getRef = (data: ParamsCell) => {
 const changeValue = (data: ParamsCell, value: string) => {
     const target = props.params.find(i => i.key === data.key)!
     target.value = value
-    console.log(target);
 }
 const columns = [
     {
