@@ -1,4 +1,11 @@
-export type Tags = "CDN" | "WEB" | "Mock" | "插画" | "风景画" | "文本";
+export type Tags =
+    | "CDN"
+    | "WEB"
+    | "Mock"
+    | "插画"
+    | "风景画"
+    | "文本"
+    | "格式转换";
 
 export type OptionalValue = {
     value: string;

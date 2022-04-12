@@ -4,26 +4,22 @@ const data: Data = {
     title: "QRCode",
     desc: "在线获取任何字符串的二维码",
     link: "https://api.oick.cn/qrcode/",
-    tags: ["CDN", "WEB"],
+    tags: ["格式转换", "WEB"],
     request: {
         root: "https://api.oick.cn/qrcode/api.php",
-
-        pathParams: [],
         params: [
             {
                 key: "text",
-                value: "https://baidu.com",
+                value: "https://gitee.com/dongzhongzhidong",
                 desc: "https 或者是 http 链接",
             },
             {
                 key: "size",
                 value: "128",
                 optional: true,
-                desc: "像素大小",
+                desc: "图片像素大小",
             },
         ],
-        body: [],
-        bodyType: "json",
     },
     resultType: "image",
 };
