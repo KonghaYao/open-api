@@ -1,16 +1,16 @@
 
 <template>
-    <div class="h-screen w-screen flex flex-col ">
+    <div class="h-screen w-screen flex flex-col noise-bg">
         <header class="flex text-3xl cursor-default  p-4 bg-gray-600 text-white"> OPEN API </header>
 
         <transition-group tag="main" name="list"
-            class="flex-grow bg-gray-50 flex flex-wrap overflow-y-auto transition-transform duration-500 justify-evenly">
+            class="flex-grow flex flex-wrap overflow-y-auto transition-transform duration-500 justify-evenly">
 
             <!--  图片方格 -->
-            <div v-for="(item, index) in store.allAPI" :key="item.Path"
+            <lazy-component @show="log(item.title)" v-for="(item, index) in store.allAPI" :key="item.Path"
                 class="relative m-8 w-48 h-64 rounded-2xl bg-white p-4 shadow-lg shadow-gray-200 transform-gpu hover:shadow-xl hover:scale-110 hover:shadow-gray-200 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
                 <div class="z-10 h-full w-full flex flex-col">
-                    <div @click="jumpTo(item.Path)" class="text-lg cursor-pointer">{{ item.title }}</div>
+                    <div @click="jumpTo(item.Path)" class="text-2xl cursor-pointer">{{ item.title }}</div>
                     <div class="flex-grow text-sm font-text overflow-y-auto">
                         {{ item.desc }}
                     </div>
@@ -22,7 +22,8 @@
                     <van-image lazy-load class="m-auto" :src="'https://doodleipsum.com/300x400/flat?n=' + index">
                     </van-image>
                 </div>
-            </div>
+            </lazy-component>
+
         </transition-group>
         <footer class="bg-gray-600 text-white p-4">
             所有 API 搜集自 网络，皆为前端可以直接调用的 API 接口，专为前端学习之用。
@@ -42,13 +43,14 @@ import { onMounted } from 'vue';
 import { Image as vanImage } from 'vant'
 import { APIDetail, useViewerStore } from './store'
 import { useRouter } from 'vue-router';
+import { shuffle } from 'lodash';
 
 const store = useViewerStore()
 onMounted(async () => {
 
     store.allAPI = []
     const api = await fetch('./data/data.json').then<APIDetail[]>((res) => res.json())
-    api.forEach((i, index) => {
+    shuffle(api).forEach((i, index) => {
         setTimeout(() => store.allAPI.push(i), index * 100)
     })
 
@@ -57,5 +59,9 @@ const router = useRouter()
 const jumpTo = (id: string) => {
     console.log(id);
     router.push('/api/' + id.replace(/\.ts/, ''))
+}
+
+const log = (name: string) => {
+    console.log(name);
 }
 </script>

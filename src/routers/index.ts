@@ -11,12 +11,6 @@ const routes = [
         path: "/api/:api",
         component: () => import("../views/api.vue"),
     },
-    {
-        name: "404",
-        path: "/404",
-        component: () => import("../views/404.vue"),
-        children: [],
-    },
     // 重定向路由
     { path: "/:pathMatch(.*)*", redirect: "/index" },
 ];

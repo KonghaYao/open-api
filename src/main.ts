@@ -19,6 +19,9 @@ Toast.setDefaultOptions({ position: "bottom" });
 createApp(App)
     .use(router)
     .use(pinia)
+    .use(Lazyload, {
+        lazyComponent: true,
+    })
     // vant 的懒加载组件
     .use(Lazyload, {
         lazyComponent: true,
