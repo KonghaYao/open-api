@@ -11,6 +11,7 @@ const Babel = (window as any).Babel as typeof BabelModule;
 import "https://unpkg.com/comlink/dist/umd/comlink.js";
 import worker from "../Evaluate/index?worker";
 import { getDataFromAPI, getPath } from "../Evaluate/getDataFromAPI";
+import { shuffle } from "lodash";
 const { wrap } = (window as any).Comlink;
 const api = wrap(new worker()) as typeof getDataFromAPI;
 
@@ -60,6 +61,16 @@ export const useViewerStore = defineStore("viewer", {
                 this.path = path;
                 this.result.duration = new Date().getTime() - startTime;
                 this.result.isReturn = true;
+            }
+        },
+        async getDataList() {
+            if (this.allAPI.length === 0) {
+                const api = await fetch("./data/data.json").then<APIDetail[]>(
+                    (res) => res.json()
+                );
+                shuffle(api).forEach((i, index) => {
+                    setTimeout(() => this.allAPI.push(i), index * 100);
+                });
             }
         },
     },

@@ -1,6 +1,6 @@
 
 <template>
-    <div class="h-screen w-screen flex flex-col noise-bg">
+    <div class="h-screen w-screen flex flex-col ">
         <header class="flex text-3xl cursor-default  p-4 bg-gray-600 text-white"> OPEN API </header>
 
         <transition-group tag="main" name="list"
@@ -18,7 +18,7 @@
                         <div class="tag" v-for="tag in item.tags">{{ tag }}</div>
                     </div>
                 </div>
-                <div class="absolute -z-10 h-full w-full top-0 left-0 overflow-hidden opacity-30">
+                <div class="absolute -z-10 h-full w-full top-0 left-0 overflow-hidden opacity-10">
                     <van-image lazy-load class="m-auto" :src="'https://doodleipsum.com/300x400/flat?n=' + index">
                     </van-image>
                 </div>
@@ -43,16 +43,10 @@ import { onMounted } from 'vue';
 import { Image as vanImage } from 'vant'
 import { APIDetail, useViewerStore } from './store'
 import { useRouter } from 'vue-router';
-import { shuffle } from 'lodash';
 
 const store = useViewerStore()
 onMounted(async () => {
-
-    store.allAPI = []
-    const api = await fetch('./data/data.json').then<APIDetail[]>((res) => res.json())
-    shuffle(api).forEach((i, index) => {
-        setTimeout(() => store.allAPI.push(i), index * 100)
-    })
+    store.getDataList()
 
 })
 const router = useRouter()
@@ -60,8 +54,8 @@ const jumpTo = (id: string) => {
     console.log(id);
     router.push('/api/' + id.replace(/\.ts/, ''))
 }
-
+// debugger 专用
 const log = (name: string) => {
-    console.log(name);
+    // console.log(name);
 }
 </script>

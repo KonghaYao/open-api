@@ -8,13 +8,13 @@
             <span class="font-code overflow-x-auto whitespace-nowrap mx-8 flex-grow flex items-center">{{
                 store.path
             }}</span>
-            <Icon class="bg-lime-400 text-white px-2 text-xl m-1">content_copy</Icon>
+            <Icon class="bg-lime-400 text-white px-2 text-xl m-1" @click="copy(store.path)">content_copy</Icon>
             <span class="text bg-green-400 text-white tag">{{
                 (store.data!.request.methods ??
                     "get").toUpperCase()
             }}</span>
         </div>
-        <div class="font-code bg-gray-50 flex-grow overflow-hidden">
+        <div class="font-code  flex-grow mr-1 overflow-hidden">
             <tabs v-model:active="active" class="h-full overflow-hidden">
 
                 <!--  路径参数 -->
@@ -59,10 +59,28 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { useViewerStore } from '../store'
-import { Tab, Tabs } from 'vant';
+import { Tab, Tabs, Toast } from 'vant';
 import Icon from "@konghayao/vue-material-icons"
 import ParamsList from './ParamsViewer/ParamsList.vue';
 const active = ref('Params')
 const store = useViewerStore()
+const copy = (text: string) => {
+    const textarea = document.createElement("input");//创建input对象
+    document.body.appendChild(textarea);//添加元素
+    textarea.value = text;
+    textarea.focus();
+    if (textarea.setSelectionRange)
+        textarea.setSelectionRange(0, textarea.value.length);//获取光标起始位置到结束位置
+    else
+        textarea.select();
+    try {
+        document.execCommand("copy");//执行复制
+        Toast('复制成功')
+    } catch (eo) {
+        Toast('复制失败')
+    }
+    document.body.removeChild(textarea);//删除元素
 
+
+}
 </script>

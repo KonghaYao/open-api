@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <router-view class="font-normal"></router-view>
+    <router-view class="font-normal noise-bg"></router-view>
 </template>
 
 <style>
