@@ -1,4 +1,5 @@
 import { Data } from "./define";
+//  这个 API 是用于搜索的 API
 const token = "akzHiYYUO5FhFLFJsgKA6OqXeEKCY0Tb6C8psUl3";
 const params = [
     {
@@ -107,7 +108,7 @@ const data: Data = {
         headers: [
             {
                 key: "Authorization",
-                value: "Token akzHiYYUO5FhFLFJsgKA6OqXeEKCY0Tb6C8psUl3",
+                value: "Token " + token,
                 desc: "账号获取的一个 Token （测试 token 请勿滥用）",
             },
         ],

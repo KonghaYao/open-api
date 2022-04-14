@@ -15,31 +15,33 @@
             }}</span>
         </div>
         <div class="font-code  flex-grow mr-1 overflow-hidden">
-            <tabs v-model:active="active" class="h-full overflow-hidden">
+            <tabs v-model:active="active" class="h-full overflow-hidden" animated>
 
                 <!--  路径参数 -->
-                <tab class="h-full overflow-auto" title="路径参数"
+                <tab title-class="font-title" class="h-full overflow-auto" title="路径参数"
+                    :badge="store.data.request.pathParams.length"
                     v-if="store.data.request.pathParams && store.data.request.pathParams.length">
+
                     <ParamsList :origin-params="store.originData!.request.pathParams!"
                         :params="store.data.request.pathParams" @refresh="store.refreshPath"></ParamsList>
                 </tab>
 
                 <!--  请求参数 -->
-                <tab class="h-full overflow-auto" title="请求参数"
+                <tab class="h-full overflow-auto" title="请求参数" :badge="store.data.request.params.length"
                     v-if="store.data.request.params && store.data.request.params.length">
                     <ParamsList :origin-params="store.originData!.request.params!" :params="store.data.request.params"
                         @refresh="store.refreshPath"></ParamsList>
                 </tab>
 
                 <!--  Headers 参数 -->
-                <tab class="h-full overflow-auto" title="Header 参数"
+                <tab class="h-full overflow-auto" title="Header 参数" :badge="store.data.request.headers.length"
                     v-if="store.data!.request.headers && store.data.request.headers.length">
                     <ParamsList :origin-params="store.originData!.request.headers!" :params="store.data.request.headers"
                         @refresh="store.refreshPath"></ParamsList>
                 </tab>
 
                 <!--  Body 参数 -->
-                <tab class="h-full overflow-auto" title="Body 参数"
+                <tab class="h-full overflow-auto" title="Body 参数" :badge="store.data.request.body.length"
                     v-if="store.data!.request.methods === 'post' && store.data.request.body && store.data.request.body.length">
                     <ParamsList :origin-params="store.originData!.request.body!" :params="store.data.request.body"
                         @refresh="store.refreshPath"></ParamsList>

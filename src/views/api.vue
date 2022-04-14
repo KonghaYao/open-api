@@ -1,13 +1,24 @@
 
 <template>
-    <div class=" flex flex-col  p-4   w-full " v-if="store.data">
-        <main class="flex-grow  overflow-hidden rounded-2xl flex flex-col m-4 p-4 bg-white  shadow-lg shadow-gray-300">
+    <div class=" flex flex-col   w-full " v-if="store.data">
+        <main class="flex-grow  overflow-hidden rounded-2xl flex flex-col m-4 bg-white  shadow-lg shadow-gray-300">
 
 
-            <header>
-                <Icon class="w-fit p-1 text-2xl text-sky-400 " @click="router.go(-1)">keyboard_arrow_left</Icon>
+            <header class="flex justify-between bg-gray-600 p-2">
+                <div class="flex  text-sky-400 items-center button-like " @click="router.go(-1)">
+                    <Icon class="p-1 text-2xl">keyboard_arrow_left</Icon>
+                    <span class="text-xl">
+                        返回
+                    </span>
+                </div>
+                <div class="flex text-red-400 items-center button-like " @click="commitError">
+                    <Icon>error</Icon>
+                    <span>
+                        汇报错误
+                    </span>
+                </div>
             </header>
-            <header class="text-3xl flex mb-4">
+            <header class="text-3xl flex mb-4 p-4">
                 <a class="hover:text-sky-400 transition-colors" :href="store.data!.link" target="blank">{{
                     store.data.title
                 }}</a>
@@ -15,7 +26,7 @@
                     <span class="text-sm bg-green-400 text-white tag" v-for="item in store.data.tags">{{ item }}</span>
                 </div>
             </header>
-            <nav class="flex flex-grow overflow-hidden">
+            <nav class="flex flex-grow overflow-hidden px-4">
                 <ParamsEditor class="w-2/3 flex-none "></ParamsEditor>
                 <ReturnVue class="flex-grow border-l border-gray-400 p-2"></ReturnVue>
             </nav>
@@ -48,4 +59,5 @@ onMounted(() => {
         router.push('/index')
     }
 })
+const commitError = () => window.open('https://gitee.com/dongzhongzhidong/open-api/issues')
 </script>
