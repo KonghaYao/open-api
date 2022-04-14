@@ -14,12 +14,11 @@
                     "get").toUpperCase()
             }}</span>
         </div>
-        <div class="font-code  flex-grow mr-1 overflow-hidden">
-            <tabs v-model:active="active" class="h-full overflow-hidden" animated>
+        <div class="font-code cursor-default  flex-grow mr-1 overflow-hidden">
+            <tabs v-model:active="active" class="h-full overflow-hidden flex flex-col" animated>
 
                 <!--  路径参数 -->
-                <tab title-class="font-title" class="h-full overflow-auto" title="路径参数"
-                    :badge="store.data.request.pathParams.length"
+                <tab class="h-full overflow-auto" title="路径参数" :badge="store.data.request.pathParams.length"
                     v-if="store.data.request.pathParams && store.data.request.pathParams.length">
 
                     <ParamsList :origin-params="store.originData!.request.pathParams!"

@@ -64,7 +64,7 @@ const columns = [
     {
         label: "描述",
         field: "desc",
-        width: "20%",
+        width: "",
     },
 ] 
 </script>

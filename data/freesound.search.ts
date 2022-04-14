@@ -39,7 +39,7 @@ const params = [
         value: [
             {
                 value: "score",
-                desc: "根据搜索引擎返回的相关分数排序(默认)。",
+                desc: "得分优先(默认)。",
             },
             {
                 value: "duration_desc",

@@ -22,8 +22,5 @@ createApp(App)
     .use(Lazyload, {
         lazyComponent: true,
     })
-    // vant 的懒加载组件
-    .use(Lazyload, {
-        lazyComponent: true,
-    })
+
     .mount("#app");
