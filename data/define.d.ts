@@ -7,7 +7,8 @@ export type Tags =
     | "背景图"
     | "文本"
     | "格式转换"
-    | "Icon";
+    | "Icon"
+    | "音效";
 
 export type OptionalValue = {
     value: string;
@@ -26,6 +27,8 @@ export type ParamsCell = {
     validate?: (self: ParamsCell) => boolean;
     /** 描述信息 */
     desc?: string;
+    /**描述的链接信息 */
+    link?: string;
 };
 export type request = {
     /** API 的根路径 */

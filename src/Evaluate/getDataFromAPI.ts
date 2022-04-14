@@ -5,6 +5,7 @@ export async function getDataFromAPI({ request }: Data, defineRequest: any) {
     const path = getPath(request, defineRequest);
     let body = null;
     let headers = new Headers();
+    setToMapLike(headers, transCellToObj(request.headers));
     if (request.methods === "post") {
         switch (request.bodyType) {
             case "urlencoded":
@@ -29,6 +30,15 @@ export async function getDataFromAPI({ request }: Data, defineRequest: any) {
     return [path, result] as [string, Blob | null];
 }
 
+const setToMapLike = <T extends { set(key: string, value: any): void }>(
+    instance: T,
+    obj: any
+) => {
+    if (obj)
+        Object.entries(obj).forEach(([key, value]) => {
+            instance.set(key, value);
+        });
+};
 const createForm = (obj: any) => {
     const form = new FormData();
     Object.entries(obj).forEach(([key, value]) => {
