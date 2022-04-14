@@ -1,7 +1,11 @@
 
 <template>
-    <div class="h-screen w-screen flex flex-col ">
-        <header class="flex text-3xl cursor-default  p-4 bg-gray-600 text-white"> OPEN API </header>
+    <div class="h-screen w-screen flex flex-col">
+        <header class="flex text-3xl cursor-default  p-4 bg-gray-600 text-white hover:text-sky-400 transition-colors">
+            OPEN API
+
+            <span class="text-sm pl-2 ">开放资源 API</span>
+        </header>
 
         <transition-group tag="main" name="list"
             class="flex-grow flex flex-wrap overflow-y-auto transition-transform duration-500 justify-evenly">
@@ -27,6 +31,7 @@
         </transition-group>
         <footer class="bg-gray-600 text-white p-4">
             所有 API 搜集自 网络，皆为前端可以直接调用的 API 接口，专为前端学习之用。
+            <a class="text-red-400" href="https://gitee.com/dongzhongzhidong/open-api/">Gitee 链接</a>
         </footer>
     </div>
 </template>

@@ -12,8 +12,8 @@
                     </span>
                 </div>
                 <div class="flex text-red-400 items-center button-like " @click="commitError">
-                    <Icon>error</Icon>
-                    <span>
+                    <Icon class="text-xl px-1">error</Icon>
+                    <span class="">
                         汇报错误
                     </span>
                 </div>

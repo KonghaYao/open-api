@@ -2,6 +2,12 @@
 <template>
     <table-lite class="w-full" is-slot-mode :columns="columns" :rows="originParams" :total="originParams!.length"
         isHidePaging>
+        <template v-slot:desc="data">
+            {{ data.value.desc }}
+            <a v-if="data.value.link" :href="data.value.link" class="text-red-400 flex ">
+                <Icon class="text-xl ">link</Icon>
+            </a>
+        </template>
         <template v-slot:key="data">{{ data.value.key }}</template>
         <template v-slot:optional="data">
             <checkbox :model-value="!data.value.optional"></checkbox>
@@ -11,7 +17,9 @@
             <input type="text" v-if="typeof data.value.value === 'string'" :value="getRef(data.value).value"
                 @input="changeData($event, data.value)" />
             <select v-else @change="changeData($event, data.value)">
-                <option :value="val.value" v-for="val in data.value.value">{{ val.value }} {{ val.desc }}</option>
+                <option :value="val.value" v-for="val in data.value.value">{{ val.value }} {{ val.desc }}
+
+                </option>
             </select>
         </template>
     </table-lite>
@@ -21,6 +29,7 @@
 import { ParamsCell } from '../../../../data/define';
 import { Checkbox } from 'vant';
 import TableLite from "vue3-table-lite/ts";
+import Icon from '@konghayao/vue-material-icons';
 
 const props = defineProps<{
     params: ParamsCell[]
